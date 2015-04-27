@@ -1,5 +1,4 @@
-<?php
-if (!defined('TL_ROOT')) die('You can not access this file directly!');
+<?php if (!defined('TL_ROOT')) die('You can not access this file directly!');
 
 /**
  * Contao Open Source CMS
@@ -35,42 +34,50 @@ $GLOBALS['TL_DCA']['tl_module']['palettes']['selectmodule'] = '{title_legend},na
 /**
  * Add fields to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard'] = array
-    (
-    'label'                             => &$GLOBALS['TL_LANG']['tl_module']['sm_wizard'],
-    'exclude'                           => true,
-    'inputType'                         => 'multiColumnWizard',
-    'eval' => array(
+$GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard'] = array(
+    'label'     => &$GLOBALS['TL_LANG']['tl_module']['sm_wizard'],
+    'exclude'   => true,
+    'inputType' => 'multiColumnWizard',
+    'eval'      => array(
         'columnFields' => array(
             'language' => array(
-                'label'                 => &$GLOBALS['TL_LANG']['tl_module']['sm_language'],
-                'inputType'             => 'select',
-                'options'               => $this->getLanguages(),
-                'eval'                  => array('mandatory' => true, 'style' => 'width:300px', 'includeBlankOption' => true)
+                'label'     => &$GLOBALS['TL_LANG']['tl_module']['sm_language'],
+                'inputType' => 'select',
+                'options'   => $this->getLanguages(),
+                'eval'      => array(
+                    'mandatory'          => true,
+                    'style'              => 'width:300px',
+                    'includeBlankOption' => true
+                )
             ),
-            'module' => array(
-                'label'                 => &$GLOBALS['TL_LANG']['tl_module']['sm_module'],
-                'exclude'               => true,
-                'inputType'             => 'select',
-                'options_callback'      => array('SelectModule_module', 'options_callback'),
-                'eval'                  => array('mandatory' => true, 'style' => 'width:300px', 'includeBlankOption' => true)
+            'module'   => array(
+                'label'            => &$GLOBALS['TL_LANG']['tl_module']['sm_module'],
+                'exclude'          => true,
+                'inputType'        => 'select',
+                'options_callback' => array(
+                    'SelectModule_module',
+                    'options_callback'
+                ),
+                'eval'             => array(
+                    'mandatory'          => true,
+                    'style'              => 'width:300px',
+                    'includeBlankOption' => true
+                )
             ),
         )
     )
 );
 
-$GLOBALS['TL_DCA']['tl_module']['fields']['sm_searchable'] = array
-(
-    'label'                             => &$GLOBALS['TL_LANG']['tl_module']['sm_searchable'],
-    'exclude'                           => true,
-    'inputType'                         => 'checkbox'
+$GLOBALS['TL_DCA']['tl_module']['fields']['sm_searchable'] = array(
+    'label'     => &$GLOBALS['TL_LANG']['tl_module']['sm_searchable'],
+    'exclude'   => true,
+    'inputType' => 'checkbox'
 );
 
 // Set chosen if we have a contao version 2.11
-if(version_compare(VERSION, "2.11", ">="))
-{
+if (version_compare(VERSION, "2.11", ">=")) {
     $GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard']['eval']['columnFields']['language']['eval']['chosen'] = true;
-	$GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard']['eval']['columnFields']['module']['eval']['chosen'] = true;
+    $GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard']['eval']['columnFields']['module']['eval']['chosen']   = true;
 }
 
 class SelectModule_module extends Backend
@@ -88,28 +95,32 @@ class SelectModule_module extends Backend
 
         $arrModules = array();
 
-        if (strlen($objWidget->currentRecord) != 0)
-        {
-            $arrModules = $this->Database->prepare("SELECT id, name FROM tl_module WHERE pid=(SELECT pid FROM tl_module WHERE id=?) ORDER BY name asc")->execute($objWidget->currentRecord)->fetchAllAssoc();
-	    $arrForms = $this->Database->prepare("SELECT id, title FROM tl_form ORDER BY title asc")->execute($objWidget->currentRecord)->fetchAllAssoc();
+        if (strlen($objWidget->currentRecord) != 0) {
+            $arrModules = $this->Database->prepare("SELECT id, name FROM tl_module WHERE pid=(SELECT pid FROM tl_module WHERE id=?) ORDER BY name asc")
+                ->execute($objWidget->currentRecord)
+                ->fetchAllAssoc()
+            ;
+            $arrForms   = $this->Database->prepare("SELECT id, title FROM tl_form ORDER BY title asc")
+                ->execute($objWidget->currentRecord)
+                ->fetchAllAssoc()
+            ;
         }
 
         $arrReturn = array();
 
-        foreach ($arrModules as $key => $value)
-        {
-            $arrReturn[$value["id"].'-module'] = $value["name"];
-        }
-	
-	foreach ($arrForms as $key => $value)
-        {
-            $arrReturn[$value["id"].'-form'] = $value["title"];
+        foreach ($arrModules as $key => $value) {
+            $arrReturn[$value["id"] . '-module'] = $value["name"];
         }
 
-	asort($arrReturn);
+        foreach ($arrForms as $key => $value) {
+            $arrReturn[$value["id"] . '-form'] = $value["title"];
+        }
+
+        asort($arrReturn);
 
         return $arrReturn;
     }
 
 }
+
 ?>

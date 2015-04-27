@@ -14,17 +14,17 @@
 /**
  * Register the classes
  */
-ClassLoader::addClasses(array
-(
-	'SelectModuleHelper' => 'system/modules/selectModule/SelectModuleHelper.php',
-	'SelectModule'       => 'system/modules/selectModule/SelectModule.php',
-));
+ClassLoader::addClasses(array(
+    'SelectModuleHelper' => 'system/modules/selectModule/SelectModuleHelper.php',
+    'SelectModule'       => 'system/modules/selectModule/SelectModule.php',
+))
+;
 
 
 /**
  * Register the templates
  */
-TemplateLoader::addFiles(array
-(
-	'sm_default' => 'system/modules/selectModule/templates',
-));
+TemplateLoader::addFiles(array(
+    'sm_default' => 'system/modules/selectModule/templates',
+))
+;
