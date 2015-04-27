@@ -61,11 +61,13 @@ class SelectModule extends Module
      */
     public function compile()
     {
-        $strReturn = "";
+        $strReturn = '';
+        $arrData   = deserialize($this->sm_wizard);
 
-        foreach (deserialize($this->sm_wizard) as $arrValue) {
-            if ($GLOBALS["TL_LANGUAGE"] == $arrValue["language"]) {
-                $arrType = explode('-', $arrValue["module"]);
+        foreach ($arrData as $arrValue) {
+            if ($GLOBALS['TL_LANGUAGE'] == $arrValue['language']) {
+                $arrType = explode('-', $arrValue['module']);
+
                 switch ($arrType[1]) {
                     case 'module':
                         $strReturn .= $this->getFrontendModule($arrType[0]);
@@ -75,6 +77,10 @@ class SelectModule extends Module
                         break;
                 }
             }
+        }
+
+        if ($this->sm_fallback && $arrData && $strReturn == '') {
+            $strReturn .= $this->getFrontendModule($arrData[0]['module']);
         }
 
         $this->Template->searchable = ($this->sm_searchable == 1) ? true : false;

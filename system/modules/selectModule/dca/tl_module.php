@@ -29,7 +29,7 @@
 /**
  * Add palettes to tl_module
  */
-$GLOBALS['TL_DCA']['tl_module']['palettes']['selectmodule'] = '{title_legend},name,type;{config_legend},sm_wizard;{search_legend},sm_searchable;';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['selectmodule'] = '{title_legend},name,type;{config_legend},sm_wizard,sm_fallback;{search_legend},sm_searchable;';
 
 /**
  * Add fields to tl_module
@@ -66,6 +66,12 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard'] = array(
             ),
         )
     )
+);
+
+$GLOBALS['TL_DCA']['tl_module']['fields']['sm_fallback'] = array(
+    'label'     => &$GLOBALS['TL_LANG']['tl_module']['sm_fallback'],
+    'exclude'   => true,
+    'inputType' => 'checkbox'
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sm_searchable'] = array(

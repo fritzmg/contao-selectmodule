@@ -47,6 +47,10 @@ $GLOBALS['TL_LANG']['tl_module']['sm_module']     = array(
     'Frontend-Modul',
     ''
 );
+$GLOBALS['TL_LANG']['tl_module']['sm_fallback']   = array(
+    'Fallback aktivieren',
+    'Wenn Sie diese Option wählen, wird das erste Modul verwendet wenn eine Sprache nicht existiert.'
+);
 $GLOBALS['TL_LANG']['tl_module']['sm_searchable'] = array(
     'Nicht suchbar',
     'Wenn Sie diese Option wählen, werden die Module nicht für die Webseiten-Suche indexiert.'
