@@ -63,24 +63,30 @@ class SelectModule extends Module
     {
         $strReturn = '';
         $arrData   = deserialize($this->sm_wizard);
+        $arrType   = array();
+
+        // The language in the backend is stored in the official way: en_US, ...
+        // As part of the url we often use en-US instead.
+        $strLanguage = str_replace('-', '_', $GLOBALS['TL_LANGUAGE']);
 
         foreach ($arrData as $arrValue) {
-            if ($GLOBALS['TL_LANGUAGE'] == $arrValue['language']) {
+            if ($strLanguage == $arrValue['language']) {
                 $arrType = explode('-', $arrValue['module']);
-
-                switch ($arrType[1]) {
-                    case 'module':
-                        $strReturn .= $this->getFrontendModule($arrType[0]);
-                        break;
-                    case 'form':
-                        $strReturn .= $this->getForm($arrType[0]);
-                        break;
-                }
             }
         }
 
-        if ($this->sm_fallback && $arrData && $strReturn == '') {
-            $strReturn .= $this->getFrontendModule($arrData[0]['module']);
+        if (!$arrType && $this->sm_fallback && $arrData) {
+            $arrType = explode('-', $arrData[0]['module']);
+        }
+
+        switch ($arrType[1]) {
+            case 'module':
+                $strReturn .= $this->getFrontendModule($arrType[0]);
+                break;
+
+            case 'form':
+                $strReturn .= $this->getForm($arrType[0]);
+                break;
         }
 
         $this->Template->searchable = ($this->sm_searchable == 1) ? true : false;
