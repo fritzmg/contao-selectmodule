@@ -1,9 +1,9 @@
 {
-	"name":"fritzmg/selectmodule",
+	"name":"fritzmg/contao-selectmodule",
 	"description":"Assign a language to a module",
 	"keywords":["frontendmodule","module","language"],
 	"type":"contao-module",
-	"homepage":"https://github.com/fritzmg/contao-selectModule",
+	"homepage":"https://github.com/fritzmg/contao-selectmodule",
 	"license":"LGPL-3.0+",
 	"authors":[
 		{
@@ -32,8 +32,8 @@
 		}
 	],
 	"support":{
-		"issues":"https://github.com/fritzmg/contao-selectModule/issues",
-		"source":"https://github.com/fritzmg/contao-selectModule"
+		"issues":"https://github.com/fritzmg/contao-selectmodule/issues",
+		"source":"https://github.com/fritzmg/contao-selectmodule"
 	},
 	"require":{
 		"php":">=5.3",
@@ -50,7 +50,7 @@
 	"extra":{
 		"contao":{
 			"sources":{
-				"system/modules/selectModule":"system/modules/selectModule"
+				"system/modules/selectmodule":"system/modules/selectmodule"
 			}
 		}
 	}
