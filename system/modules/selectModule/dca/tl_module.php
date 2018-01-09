@@ -65,19 +65,22 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['sm_wizard'] = array(
                 )
             ),
         )
-    )
+    ),
+    'sql' => 'blob NULL'
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sm_fallback'] = array(
     'label'     => &$GLOBALS['TL_LANG']['tl_module']['sm_fallback'],
     'exclude'   => true,
-    'inputType' => 'checkbox'
+    'inputType' => 'checkbox',
+    'sql' => "char(1) NOT NULL default ''"
 );
 
 $GLOBALS['TL_DCA']['tl_module']['fields']['sm_searchable'] = array(
     'label'     => &$GLOBALS['TL_LANG']['tl_module']['sm_searchable'],
     'exclude'   => true,
-    'inputType' => 'checkbox'
+    'inputType' => 'checkbox',
+    'sql' => "char(1) NOT NULL default ''"
 );
 
 // Set chosen if we have a contao version 2.11
