@@ -1,9 +1,9 @@
 {
-	"name":"byteworks/selectmodule",
+	"name":"fritzmg/selectmodule",
 	"description":"Assign a language to a module",
 	"keywords":["frontendmodule","module","language"],
 	"type":"contao-module",
-	"homepage":"https://github.com/byteworks-ch/selectModule",
+	"homepage":"https://github.com/fritzmg/contao-selectModule",
 	"license":"LGPL-3.0+",
 	"authors":[
 		{
@@ -23,17 +23,21 @@
 			"email":"mb@byteworks.ch",
 			"homepage":"http://www.byteworks.ch",
 			"role":"Contributor"
+		},
+		{
+			"name":"Fritz Michael Gschwantner",
+			"email":"fmg@inspiredminds.at",
+			"homepage":"http://www.inspiredminds.at",
+			"role":"Contributor"
 		}
 	],
 	"support":{
-		"email":"contao@men-at-work.de",
-		"issues":"https://github.com/menatwork-ia/selectModule/issues",
-		"irc":"irc://irc.freenode.org/contao.dev",
-		"source":"https://github.com/menatwork-ia/selectModule"
+		"issues":"https://github.com/fritzmg/contao-selectModule/issues",
+		"source":"https://github.com/fritzmg/contao-selectModule"
 	},
 	"require":{
 		"php":">=5.3",
-		"contao/core-bundle":"^2.11 || ^3.0 || ^4.4",
+		"contao/core-bundle":"^3.0 || ^4.4",
 		"contao-community-alliance/composer-plugin":"^2.4 || ^3.0",
 		"menatwork/contao-multicolumnwizard":"~3.2"
 	},
