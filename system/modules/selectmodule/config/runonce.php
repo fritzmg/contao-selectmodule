@@ -26,7 +26,7 @@
  * @license    GNU/LGPL
  * @filesource
  */
-class SelectModuleRunonce extends Controller
+class SelectModuleRunonce
 {
 
     public function run()
